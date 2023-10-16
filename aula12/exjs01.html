@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hora do Dia</title>
     <style>
         body {
             background-color: rgb(112, 112, 151);
@@ -20,10 +20,14 @@
             background-color: white;
             border-radius: 10px;
             width: 500px;
-            height: 500px;
+            
             padding: 15px;
             margin: auto;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.322);
+       }
+
+       div {
+            text-align: center;
        }
 
        footer {
@@ -37,24 +41,39 @@
 
     </style>
 </head>
-<body>
+<body onload="carregar()">
     <header>
         <h1>Hora do Dia</h1>
     </header>
     
     <section>
-        <div>
-            Testando...
+        <div id="msg">
+            Aqui vai aparecer a mensagem
         </div>
-        <div>
-            Olá, arrombado
+        <div id="foto">
+            <img id="imagem" src="imagensJS/manha.png"  alt="foto do horário">
         </div>
     </section>
 
     <footer> &copy; dev.kio </footer>
 
     <script>
-
+        function carregar () {
+        var msg = window.document.getElementById('msg')
+        var img = window.document.getElementById('imagem')
+        var data = new Date()
+        var hora = data.getHours() 
+       
+        msg.innerHTML = `Agora são ${hora} horas.`
+        
+        if (hora >= 0 && hora < 12) {
+            img.src = 'manha.png'
+        } else if (hora >= 12 && hora < 18) {
+            img.src = 'tarde.png'
+        } else {
+            img.src = 'noite.png'
+        }
+        }
     </script>
     
 </body>
