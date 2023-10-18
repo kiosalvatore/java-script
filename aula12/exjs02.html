@@ -7,20 +7,20 @@
     <style>
         body {
             background-color: rgb(151, 151, 218);
-            text-align: center;
+            
             font-family: Arial, Helvetica, sans-serif;
         }
         
         header{
             color: white;
+            text-align: center;
         }
 
         section {
             background-color: white;
             width: 500px;
             margin:auto;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
         
@@ -36,6 +36,7 @@
             color: white;
             padding: 10px;
             font-size: 17px;
+            text-align: center;
 
         }
     </style>
@@ -87,6 +88,7 @@
                 var genero = ''
                 var img = document.createElement('img')
                 img.setAttribute('id', 'foto')
+                img.style.padding = '15px'
 
                 if(fsex[0].checked) {
                     genero = 'Homem'
@@ -119,7 +121,8 @@
                         // Idoso
                         img.setAttribute('src', 'imagensex02/idosoM.png')
                     }
-                } 
+                }
+
                 res.style.textAlign = 'center'
                 res.innerHTML = `Detectamos ${genero} com ${idade} anos`
                 res.appendChild(img)
