@@ -11,7 +11,7 @@
 
        header {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 40px;
+            font-size: 30px;
             text-align: center;
             color: white;
        }
@@ -28,6 +28,7 @@
 
        div {
             text-align: center;
+            padding: 10px;
        }
 
        footer {
@@ -62,16 +63,20 @@
         var msg = window.document.getElementById('msg')
         var img = window.document.getElementById('imagem')
         var data = new Date()
-        var hora = data.getHours() 
+        var hora = data.getHours()  
+        
        
         msg.innerHTML = `Agora são ${hora} horas.`
         
         if (hora >= 0 && hora < 12) {
-            img.src = 'manha.png'
+            img.src = 'imagensJS/manha.png'
+            document.body.style.background = '#fbe0c8'
         } else if (hora >= 12 && hora < 18) {
-            img.src = 'tarde.png'
+            img.src = 'imagensJS/tarde.png'
+            document.body.style.background = '#b2450a'
         } else {
-            img.src = 'noite.png'
+            img.src = 'imagensJS/noite.png'
+            document.body.style.background = '#9a7f7c'
         }
         }
     </script>
