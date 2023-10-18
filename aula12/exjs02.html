@@ -3,9 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Verificador de Idade</title>
+    <style>
+        body {
+            background-color: rgb(151, 151, 218);
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        header{
+            color: white;
+        }
+
+        section {
+            background-color: white;
+            width: 500px;
+            margin:auto;
+            padding: 10px;
+            padding-top: 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
+        
+        }
+        
+        div#info {
+            text-align: left;
+        }
+
+      
+
+        footer {
+            color: white;
+            padding: 10px;
+            font-size: 17px;
+
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>Verificador de Idade</h1>
+                            
+    </header>
+    <section>
+        <div id="info">
+            <p>
+                Ano de Nascimento:
+                <input type="number" name="txtano" id="txtano" min="0">
+            </p>
+
+        
+        <p> Sexo: 
+            <input type="radio" name="radsex" id="imasc" value="Masculino" checked>
+            <label for="imasc">Masculino</label>
+            
+            <input type="radio" name="radsex" id="ifem" value="Feminino">
+            <label for="ifem">Feminino</label>
+
+        </p>
+
+        <p><input type="button" value="Verificar" onclick="verificar()"></p>
+
+        </div>
+
+        <div id="res"> Preencha os dados acima para ver o resultado!</div>
+
+         
+    </section>
+    <footer> &copy; dev.kio</footer>
+
+    <script>
+        function verificar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var fano = document.getElementById('txtano')
+            var res = document.getElementById('res')
+
+            if (fano.value.length == 0 || fano.value > ano) {
+                window.alert('[ERRO]Verifique os dados e tente novamente!')
+            } else {
+                var fsex = document.getElementsByName('radsex')
+                var idade = ano - Number(fano.value)
+                var genero = ''
+                var img = document.createElement('img')
+                img.setAttribute('id', 'foto')
+
+                if(fsex[0].checked) {
+                    genero = 'Homem'
+                    if(idade >=0 && idade < 10) {
+                        // Criança
+                        img.setAttribute('src', 'imagensex02/criançaH.png')
+                    } else if(idade < 21) {
+                        // Jovem
+                        img.setAttribute('src', 'imagensex02/jovemH.png')
+                    } else if(idade < 50) {
+                        // Adulto
+                        img.setAttribute('src', 'imagensex02/adultoH.png')
+                    } else { 
+                        // Idoso
+                        img.setAttribute('src', 'imagensex02/idosoH.png')
+                    }
+
+                } else if (fsex[1].checked) {
+                    genero = 'Mulher'
+                    if(idade >=0 && idade < 10) {
+                        // Criança  
+                        img.setAttribute('src', 'imagensex02/criançaM.png')
+                    } else if(idade < 21) {
+                        // Jovem    
+                        img.setAttribute('src', 'imagensex02/jovemM.png')
+                    } else if(idade < 50) {
+                        // Adulto
+                        img.setAttribute('src', 'imagensex02/adultoM.png')
+                    } else { 
+                        // Idoso
+                        img.setAttribute('src', 'imagensex02/idosoM.png')
+                    }
+                } 
+                res.style.textAlign = 'center'
+                res.innerHTML = `Detectamos ${genero} com ${idade} anos`
+                res.appendChild(img)
+
+        }
+        }
+    </script>
 </body>
 </html>
