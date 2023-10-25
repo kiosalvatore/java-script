@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(112, 112, 151);
+        }
+
+       header {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            color: white;
+       }
+
+       section {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            
+            padding: 15px;
+            margin: auto;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.322);
+       }
+
+       div {
+            text-align: left;
+            padding: 10px;
+            
+       }
+
+       footer {
+            font-size: 15px;
+            padding-top: 20px;
+            text-align: center;
+            color: white;
+
+       }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    
+    <section>
+        <div id="dados">
+            <p>Início: 
+                <input type="number" name="inicio" id="txti" min="0"></p>
+            <p>Fim: 
+                <input type="number" name="fim" id="txtf" min="0"></p>
+            <p>Passo: 
+                <input type="number" name="passo" id="txtp" min="0"></p>
+
+            <p><input type="button" value="Contar" onclick="contar()"></p>
+        </div>
+        <div id="res">
+            
+        </div>
+    </section>
+
+    <footer> &copy; dev.kio </footer>
+
+    <script>
+        function contar() {
+            let ini = document.getElementById('txti')
+            let fim = document.getElementById('txtf')
+            let passo = document.getElementById('txtp')
+            let res = document.getElementById('res')
+
+            if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+                window.alert('[ERRO] Faltam dados!')
+                res.innerHTML = 'Impossível contar!'
+
+            } else {
+                res.innerHTML = 'Contando: <br>'
+                let i = Number(ini.value)
+                let f = Number(fim.value)
+                let p = Number(passo.value)
+                if(p <= 0) {
+                    window.alert('Passo inválido! Considerando PASSO 1')
+                    p = 1
+                }
+                
+                if (i > f) {
+                    // Contagem crescente
+                    for(let c = i; c <= f; c += p) {
+                    res.innerHTML += `${c} \u{1F449}`
+                }
+            
+            } else {
+                // Contagem regressiva
+                for(let c = i; c >= f; c-= p ) {
+                    res.innerHTML += `${c} \u{1F449}`
+                }
+            }
+            res.innerHTML += `\u{1F3C1}`
+        }
+
+    }
+    </script>
+</body>
+</html>
