@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(112, 112, 151);
+        }
+
+       header {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            text-align: center;
+            color: white;
+       }
+
+       section {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            
+            padding: 15px;
+            margin: auto;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.322);
+       }
+
+       div {
+            text-align: left;
+            padding: 10px;
+            
+       }
+
+       select {
+        width: 200px;
+        
+       }
+
+       
+
+       footer {
+            font-size: 15px;
+            padding-top: 20px;
+            text-align: center;
+            color: white;
+
+       }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <p>Número: <input type="number" name="num" id="txtn">
+                           <input type="button" value="Gerar Tabuada" onclick="tabuada()"> </p>
+            </div>
+
+            <div>
+                <select name="tabuada" id="seltab" size="10">
+                    <option > <!-- Nesse caso o "option" não tera "value" pois não faz sentido
+                                e o "Digite um número acima" é simplesmente para dar um espaço
+                            meramente estético no select
+                            O size="10" é para configurar a "height" da select de acordo com
+                            o número de vezes que o número será multiplicado. Ex: 10-->
+                        Digite um número acima</option>
+                </select>
+            </div>
+            
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+
+    <script>
+        function tabuada() {
+            var num = document.getElementById('txtn')
+            var tab = document.getElementById('seltab')
+
+
+            if (num.value.length == 0 ) {
+                window.alert('Por favor, digite um número')
+            } else {
+                var n = Number(num.value)
+                var c = 1
+                tab.innerHTML = ''
+
+                do { 
+                /* O "item.text = "`${n} x ${c} = ${n*c}`" é como se fosse um
+                "value" do 'option' em JS
+                E o "option" é a tag que permite a entrada de opções
+                na "select", ou seja, onde entrarão as multiplicações
+                citadas no exemplo. */
+                var item = document.createElement('option')
+                tab.appendChild(item)
+                item.text = `${n} x ${c} = ${n*c}`
+                c++
+
+            }  while (c <= 10)
+
+                
+            }   
+                
+            
+        }
+    </script>
+</body>
+</html>
